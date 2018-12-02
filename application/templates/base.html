@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Usability Evaluation :: Spreadshirt vs. Shirtinator</title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <span class="navbar-brand">Usability Evaluation</span>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item {% if view == 'index' %}active{% endif %}">
+          <a class="nav-link" href="{{ url_for('index') }}">Startseite</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% if view == 'survey' %}active{% endif %}" href="{{ url_for('survey') }}">Fragebogen</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% if view == 'privacy' %}active{% endif %}" href="{{ url_for('privacy') }}">Datenschutzhinweis</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  {% block main %}
+  {% endblock %}
+</body>
+
+</html>
