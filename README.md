@@ -22,7 +22,3 @@ or a command installed into the virtual environment, for example to run the appl
 ```
 $ pipenv run python usability-survey.py
 ```
-
-## Interface
-![index.html](doc/img/index.png)
-![survey.html](doc/img/survey.png)

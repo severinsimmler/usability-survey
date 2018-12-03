@@ -8,8 +8,9 @@
             <h1>Herzlich willkommen!</h1>
             <p>Hier kommt eine kurze Einleitung.</p>
             <h4>Vielen Dank</h4>
-            <div class="alert alert-warning" role="alert" style="margin-top: 40px;">
-                Hiermit erklärst du dich mit den Datenschutzbestimmungen einverstanden, bla bla bla...
+            <hr>
+            <div class="alert alert-warning" role="alert">
+                Hiermit erklärst du dich mit den <a href="{{ url_for('privacy') }}">Datenschutzbestimmungen</a> einverstanden.
             </div>
             <a class="btn btn-secondary" href="{{ url_for('survey') }}" role="button">Loslegen!</a>
         </div>

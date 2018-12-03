@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Usability Evaluation :: Spreadshirt vs. Shirtinator</title>
+  <title>Usability Evaluation</title>
   <meta name="author" content="">
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -25,10 +25,7 @@
           <a class="nav-link" href="{{ url_for('index') }}">Startseite</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link {% if view == 'survey' %}active{% endif %}" href="{{ url_for('survey') }}">Fragebogen</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link {% if view == 'privacy' %}active{% endif %}" href="{{ url_for('privacy') }}">Datenschutzhinweis</a>
+          <a class="nav-link {% if view == 'privacy' %}active{% endif %}" href="{{ url_for('privacy') }}">Datenschutzbestimmungen</a>
         </li>
       </ul>
     </div>

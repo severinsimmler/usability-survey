@@ -1,6 +1,5 @@
 import json
 from pathlib import Path
-import uuid
 
 import flask
 
@@ -14,11 +13,6 @@ def index():
     return flask.render_template("index.html",
                                  view="index")
 
-@web.route("/error")
-def error():
-    return flask.render_template("error.html",
-                                 view="error")
-
 @web.route("/privacy")
 def privacy():
     return flask.render_template("privacy.html",
@@ -26,20 +20,19 @@ def privacy():
 
 @web.route("/survey")
 def survey():
-    return flask.render_template("survey.html",
-                                 view="survey")
+    return flask.render_template("survey.html")
 
 @web.route("/thankyou", methods=["POST"])
 def thankyou():
-    user = str(uuid.uuid4())
-    forms = flask.request.form
-    data = dict()
+    data = flask.request.form
+    pseudonym = data["pseudonym"].lower().replace(" ", "-")
+    
+    textfile = Path(f"fragebogen-{pseudonym}.json")
 
-    data["user"] = user
-    data["geschlecht"] = forms["geschlecht"]
-    data["alter"] = forms["alter"]
-
-    print(json.dumps(data))
+    # Dump forms to JSON:
+    with textfile.open("w", encoding="utf-8") as file:
+        file.write(json.dumps(data, ensure_ascii=False, indent=4))
+    
+    print(f"INFO: Dumped survey data to '{textfile.absolute()}'.")
     return flask.render_template("thankyou.html",
                                  view="thankyou")
-
