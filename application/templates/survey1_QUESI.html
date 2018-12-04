@@ -1,0 +1,400 @@
+{% extends "base.html" %}
+
+{% block main %}
+
+<form action="/thankyou" method="POST" enctype="multipart/form-data">
+    <div class="container">
+        <div class="row" style="margin-top: 50px;">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-header">
+                        <b>QUESI</b>
+                    </div>
+                    <div class="card-body">
+                      <div>
+                        <table class="table table-striped">
+                          <th>
+                            Item
+                          </th>
+                          <th style="padding: 20px; text-align:center">
+                            trifft gar<br>nicht zu
+                          </th>
+                          <th style="padding: 20px; text-align:center">
+                            trifft<br>wenig<br>zu
+                          </th>
+                          <th style="padding: 20px; text-align:center">
+                            trifft<br>teils-<br>teils zu
+                          </th>
+                          <th style="padding: 20px; text-align:center">
+                            trifft<br>ziemlich<br>zu
+                          </th>
+                          <th style="padding: 20px; text-align:center">
+                            trifft<br>völlig zu
+                          </th>
+                          <!-- Item1 -->
+                          <tr>
+                            <td>Es gelang mir, das System ohne Nachdenken zu benutzen.</td>
+                            <td align="center">
+                              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item1" id="Auswahl1"
+                                value="item1">
+                            </td>
+                            <td align="center">
+                              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item1" id="Auswahl2"
+                                value="item1">
+                            </td>
+                            <td align="center">
+                              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item1" id="Auswahl3"
+                                value="item1">
+                            </td>
+                            <td align="center">
+                              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item1" id="Auswahl4"
+                                value="item1">
+                            </td>
+                            <td align="center">
+                              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item1" id="Auswahl5"
+                                value="item1">
+                            </td>
+                          </tr>
+
+                          <!-- Item2 -->
+                          <tr>
+                            <td>Ich habe erreicht, was ich mit dem System erreichen wollte.</td>
+                            <td align="center">
+                              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item2" id="Auswahl1"
+                                value="item2">
+                            </td>
+                            <td align="center">
+                              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item2" id="Auswahl2"
+                                value="item2">
+                            </td>
+                            <td align="center">
+                              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item2" id="Auswahl3"
+                                value="item2">
+                            </td>
+                            <td align="center">
+                              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item2" id="Auswahl4"
+                                value="item2">
+                            </td>
+                            <td align="center">
+                              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item2" id="Auswahl5"
+                                value="item2">
+                            </td>
+                          </tr>
+
+                          <!-- Item3 -->
+                          <tr>
+                            <td>Mir war sofort klar, wie das System funktioniert.</td>
+                            <td align="center">
+                              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item3" id="Auswahl1"
+                                value="item3">
+                            </td>
+                            <td align="center">
+                              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item3" id="Auswahl2"
+                                value="item3">
+                            </td>
+                            <td align="center">
+                              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item3" id="Auswahl3"
+                                value="item3">
+                            </td>
+                            <td align="center">
+                              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item3" id="Auswahl4"
+                                value="item3">
+                            </td>
+                            <td align="center">
+                              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item3" id="Auswahl5"
+                                value="item3">
+                            </td>
+                          </tr>
+
+                          <!-- Item4 -->
+                          <tr>
+                            <td>Der Umgang mit dem System erschien mir vertraut.</td>
+                            <td align="center">
+                              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item4" id="Auswahl1"
+                                value="item4">
+                            </td>
+                            <td align="center">
+                              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item4" id="Auswahl2"
+                                value="item4">
+                            </td>
+                            <td align="center">
+                              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item4" id="Auswahl3"
+                                value="item4">
+                            </td>
+                            <td align="center">
+                              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item4" id="Auswahl4"
+                                value="item4">
+                            </td>
+                            <td align="center">
+                              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item4" id="Auswahl5"
+                                value="item4">
+                            </td>
+                          </tr>
+
+                          <!-- Item5 -->
+                          <tr>
+                            <td>Bei der Benutzung des Systems sind keine Probleme aufgetreten.</td>
+                            <td align="center">
+                              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item5" id="Auswahl1"
+                                value="item5">
+                            </td>
+                            <td align="center">
+                              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item5" id="Auswahl2"
+                                value="item5">
+                            </td>
+                            <td align="center">
+                              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item5" id="Auswahl3"
+                                value="item5">
+                            </td>
+                            <td align="center">
+                              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item5" id="Auswahl4"
+                                value="item5">
+                            </td>
+                            <td align="center">
+                              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item5" id="Auswahl5"
+                                value="item5">
+                            </td>
+                          </tr>
+
+                          <!-- Item6 -->
+                          <tr>
+                            <td>Die Systembenutzung war unkompliziert.</td>
+                            <td align="center">
+                              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item6" id="Auswahl1"
+                                value="item6">
+                            </td>
+                            <td align="center">
+                              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item6" id="Auswahl2"
+                                value="item6">
+                            </td>
+                            <td align="center">
+                              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item6" id="Auswahl3"
+                                value="item6">
+                            </td>
+                            <td align="center">
+                              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item6" id="Auswahl4"
+                                value="item6">
+                            </td>
+                            <td align="center">
+                              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item6" id="Auswahl5"
+                                value="item6">
+                            </td>
+                          </tr>
+
+                          <!-- Item7 -->
+                          <tr>
+                            <td>Die Systembenutzung war unkompliziert.</td>
+                            <td align="center">
+                              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item7" id="Auswahl1"
+                                value="item7">
+                            </td>
+                            <td align="center">
+                              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item7" id="Auswahl2"
+                                value="item7">
+                            </td>
+                            <td align="center">
+                              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item7" id="Auswahl3"
+                                value="item7">
+                            </td>
+                            <td align="center">
+                              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item7" id="Auswahl4"
+                                value="item7">
+                            </td>
+                            <td align="center">
+                              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item7" id="Auswahl5"
+                                value="item7">
+                            </td>
+                          </tr>
+
+                          <!-- Item8 -->
+                          <tr>
+                            <td>Es fiel mir von Anfang an leicht, das System zu benutzen.</td>
+                            <td align="center">
+                              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item8" id="Auswahl1"
+                                value="item8">
+                            </td>
+                            <td align="center">
+                              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item8" id="Auswahl2"
+                                value="item8">
+                            </td>
+                            <td align="center">
+                              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item8" id="Auswahl3"
+                                value="item8">
+                            </td>
+                            <td align="center">
+                              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item8" id="Auswahl4"
+                                value="item8">
+                            </td>
+                            <td align="center">
+                              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item8" id="Auswahl5"
+                                value="item8">
+                            </td>
+                          </tr>
+
+                          <!-- Item9 -->
+                          <tr>
+                            <td> Mir war immer klar, was ich tun musste, um das System zu benutzen.</td>
+                            <td align="center">
+                              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item9" id="Auswahl1"
+                                value="item9">
+                            </td>
+                            <td align="center">
+                              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item9" id="Auswahl2"
+                                value="item9">
+                            </td>
+                            <td align="center">
+                              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item9" id="Auswahl3"
+                                value="item9">
+                            </td>
+                            <td align="center">
+                              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item9" id="Auswahl4"
+                                value="item9">
+                            </td>
+                            <td align="center">
+                              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item9" id="Auswahl5"
+                                value="item9">
+                            </td>
+                          </tr>
+
+                          <!-- Item10 -->
+                          <tr>
+                            <td>Die Benutzung des Systems verlief reibungslos.</td>
+                            <td align="center">
+                              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item10" id="Auswahl1"
+                                value="item10">
+                            </td>
+                            <td align="center">
+                              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item10" id="Auswahl2"
+                                value="item10">
+                            </td>
+                            <td align="center">
+                              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item10" id="Auswahl3"
+                                value="item10">
+                            </td>
+                            <td align="center">
+                              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item10" id="Auswahl4"
+                                value="item10">
+                            </td>
+                            <td align="center">
+                              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item10" id="Auswahl5"
+                                value="item10">
+                            </td>
+                          </tr>
+
+                          <!-- Item11 -->
+                          <tr>
+                            <td>Ich musste mich kaum auf die Benutzung des Systems konzentrieren.</td>
+                            <td align="center">
+                              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item11" id="Auswahl1"
+                                value="item11">
+                            </td>
+                            <td align="center">
+                              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item11" id="Auswahl2"
+                                value="item11">
+                            </td>
+                            <td align="center">
+                              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item11" id="Auswahl3"
+                                value="item11">
+                            </td>
+                            <td align="center">
+                              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item11" id="Auswahl4"
+                                value="item11">
+                            </td>
+                            <td align="center">
+                              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item11" id="Auswahl5"
+                                value="item11">
+                            </td>
+                          </tr>
+
+                          <!-- Item12 -->
+                          <tr>
+                            <td>Das System hat mich dabei unterstützt, meine Ziele vollständig zu erreichen.</td>
+                            <td align="center">
+                              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item12" id="Auswahl1"
+                                value="item12">
+                            </td>
+                            <td align="center">
+                              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item12" id="Auswahl2"
+                                value="item12">
+                            </td>
+                            <td align="center">
+                              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item12" id="Auswahl3"
+                                value="item12">
+                            </td>
+                            <td align="center">
+                              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item12" id="Auswahl4"
+                                value="item12">
+                            </td>
+                            <td align="center">
+                              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item12" id="Auswahl5"
+                                value="item12">
+                            </td>
+                          </tr>
+
+                          <!-- Item13 -->
+                          <tr>
+                            <td>Die Benutzung des Systems war mir auf Anhieb klar.</td>
+                            <td align="center">
+                              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item13" id="Auswahl1"
+                                value="item13">
+                            </td>
+                            <td align="center">
+                              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item13" id="Auswahl2"
+                                value="item13">
+                            </td>
+                            <td align="center">
+                              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item13" id="Auswahl3"
+                                value="item13">
+                            </td>
+                            <td align="center">
+                              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item13" id="Auswahl4"
+                                value="item13">
+                            </td>
+                            <td align="center">
+                              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item13" id="Auswahl5"
+                                value="item13">
+                            </td>
+                          </tr>
+
+                          <!-- Item14 -->
+                          <tr>
+                            <td>Ich tat immer automatisch das Richtige, um mein Ziel zu erreichen.</td>
+                            <td align="center">
+                              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item14" id="Auswahl1"
+                                value="item14">
+                            </td>
+                            <td align="center">
+                              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item14" id="Auswahl2"
+                                value="item14">
+                            </td>
+                            <td align="center">
+                              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item14" id="Auswahl3"
+                                value="item14">
+                            </td>
+                            <td align="center">
+                              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item14" id="Auswahl4"
+                                value="item14">
+                            </td>
+                            <td align="center">
+                              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item14" id="Auswahl5"
+                                value="item14">
+                            </td>
+                          </tr>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 50px; margin-bottom: 50px;">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8">
+
+                <input class="btn btn-secondary" type="submit" value="Fertig!">
+            </div>
+            <div class="col-sm-2"></div>
+        </div>
+    </div>
+    </div>
+</form>
+{% endblock %}

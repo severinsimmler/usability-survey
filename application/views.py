@@ -20,19 +20,19 @@ def privacy():
 
 @web.route("/survey")
 def survey():
-    return flask.render_template("survey.html")
+    return flask.render_template("survey1_QUESI.html")
 
 @web.route("/thankyou", methods=["POST"])
 def thankyou():
     data = flask.request.form
     pseudonym = data["pseudonym"].lower().replace(" ", "-")
-    
+
     textfile = Path(f"fragebogen-{pseudonym}.json")
 
     # Dump forms to JSON:
     with textfile.open("w", encoding="utf-8") as file:
         file.write(json.dumps(data, ensure_ascii=False, indent=4))
-    
+
     print(f"INFO: Dumped survey data to '{textfile.absolute()}'.")
     return flask.render_template("thankyou.html",
                                  view="thankyou")
