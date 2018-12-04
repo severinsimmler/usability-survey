@@ -1,0 +1,131 @@
+{% extends "base.html" %}
+
+{% block main %}
+
+<form action="/thankyou" method="POST" enctype="multipart/form-data">
+    <div class="container">
+        <div class="row" style="margin-top: 50px;">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8">
+                <h2>NASA-TLX Fragebogen zur Messung der Effizienz</h2>
+                <div class="card" style="margin-top: 50px;">
+                    <div class="card-header">
+                        <b>Geistige Anforderungen</b>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="geistig">Wie viel geistige Anstrengung war bei der
+                                Informationsaufnahme und -verarbeitung erforderlich (z.B. Denken, Entscheiden,
+                                Rechnen, Erinnern, Hinsehen, Suchen...)? War die Aufgabe leicht oder
+                                anspruchsvoll, einfach oder komplex, erforderte sie hohe Genauigkeit oder war
+                                sie fehlertolerant?</label>
+                            <div class="text-center" style="margin-top: 20px;">
+                                <span>gering</span>
+                                <input style="width: 500px;" type="range" min="0" max="10" step="1" value="5" name="geistig"
+                                    id="geistig" />
+                                <span>hoch</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" style="margin-top: 50px;">
+                    <div class="card-header">
+                        <b>Körperliche Anforderungen</b>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="körperlich">Wie viel körperliche Aktivität war erforderlich
+                                (z.B. Ziehen, Drücken, Drehen, Steuern, Aktivieren,...)? War die Aufgabe leicht
+                                oder schwer, einfach oder anstrengend, erholsam oder mühselig?</label>
+                            <div class="text-center" style="margin-top: 20px;">
+                                <span>gering</span>
+                                <input style="width: 500px;" type="range" min="0" max="10" step="1" value="5" name="körperlich"
+                                    id="körperlich" />
+                                <span>hoch</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" style="margin-top: 50px;">
+                    <div class="card-header">
+                        <b>Zeitliche Anforderungen</b>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="zeitlich">Wie viel Zeitdruck empfanden Sie hinsichtlich der
+                                Häufigkeit oder dem Takt, mit dem Aufgaben oder Aufgabenelemente auftraten? War
+                                die Abfolge langsam und geruhsam oder schnell und hektisch?</label>
+                            <div class="text-center" style="margin-top: 20px;">
+                                <span>gering</span>
+                                <input style="width: 500px;" type="range" min="0" max="10" step="1" value="5" name="zeitlich"
+                                    id="zeitlich" />
+                                <span>hoch</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" style="margin-top: 50px;">
+                    <div class="card-header">
+                        <b>Leistung</b>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="leistung">Wie erfolgreich haben Sie Ihrer Meinung nach die
+                                vom Versuchsleiter (oder Ihnen selbst) gesetzten Ziele erreicht? Wie zufrieden
+                                waren Sie mit Ihrer Leistung bei der Verfolgung dieser Ziele?</label>
+                            <div class="text-center" style="margin-top: 20px;">
+                                <span>gering</span>
+                                <input style="width: 500px;" type="range" min="0" max="10" step="1" value="5" name="leistung"
+                                    id="leistung" />
+                                <span>hoch</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" style="margin-top: 50px;">
+                    <div class="card-header">
+                        <b>Anstrengung</b>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="anstrengung">Wie hart mussten sie arbeiten, um Ihren Grad an
+                                Aufgabenerfüllung zu erreichen?</label>
+                            <div class="text-center" style="margin-top: 20px;">
+                                <span>gering</span>
+                                <input style="width: 500px;" type="range" min="0" max="10" step="1" value="5" name="anstrengung"
+                                    id="anstrengung" />
+                                <span>hoch</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" style="margin-top: 50px;">
+                    <div class="card-header">
+                        <b>Frustration</b>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="frustration">Wie unsicher, entmutigt, irritiert, gestresst und
+                                verärgert (versus sicher, bestätigt, zufrieden, entspannt und zufrieden mit
+                                sich selbst) fühlten Sie sich während der Aufgabe?</label>
+                            <div class="text-center" style="margin-top: 20px;">
+                                <span>gering</span>
+                                <input style="width: 500px;" type="range" min="0" max="10" step="1" value="5" name="frustration"
+                                    id="frustration" />
+                                <span>hoch</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="alert alert-success" role="alert" style="margin-top: 50px;">Kontrollieren sie bitte, ob Sie
+                    zu allen Fragen Angaben gemacht haben. Bei Unklarheiten wenden Sie sich bitte an die
+                    Versuchsleiterin/den Versuchsleiter.</div>
+                <div class="col-sm-2"></div>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 20px; margin-bottom: 50px;">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8">
+
+                <input class="btn btn-secondary" type="submit" value="Fertig!">
+            </div>
+            <div class="col-sm-2"></div>
+        </div>
+    </div>
+    </div>
+</form>
+{% endblock %}

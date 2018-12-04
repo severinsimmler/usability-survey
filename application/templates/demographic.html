@@ -2,7 +2,7 @@
 
 {% block main %}
 
-<form action="/thankyou" method="POST" enctype="multipart/form-data">
+<form action="/quesi" method="POST" enctype="multipart/form-data">
     <div class="container">
         <div class="row" style="margin-top: 50px;">
             <div class="col-sm-2"></div>
@@ -16,7 +16,9 @@
                             <label for="pseudonym">Pseudonym</label>
                             <input type="text" class="form-control" id="pseudonym" name="pseudonym" aria-describedby="pseudonym-help"
                                 required>
-                            <small id="pseudonym-help" class="form-text text-muted">Der Name, der dir für diese Umfrage zugewiesen wurde.</small>
+                            <small id="pseudonym-help" class="form-text text-muted">Die ersten zwei Buchstaben des
+                                Vornamens deiner Mutter, die ersten zwei Buchstaben des Vornamens deines Vaters und der
+                                Tag deines Geburtstags. <b>Beispiel</b>: mano15.</small>
                         </div>
                         <fieldset class="form-group" style="margin-top: 30px;">
                             <div class="row">
@@ -46,11 +48,21 @@
                                 </div>
                             </div>
                         </fieldset>
-                        <div class="form-group row" style="margin-top: 30px;">
-                            <label for="alter" class="col-sm-2 col-form-label">Alter</label>
-                            <div class="col-sm-10">
-                                <input type="number" class="form-control" id="alter" name="alter" min=10 max=100>
-                            </div>
+                        <div class="form-group">
+                            <label for="pseudonym">Alter</label>
+                            <input type="number" class="form-control" id="alter" name="alter" min=10 max=100 required>
+                        </div>
+                        <div class="form-group" style="margin-top: 30px;">
+                            <label for="alter">Höchster Schulabschluss</label>
+                            <input type="text" class="form-control" id="schulabschluss" name="schulabschluss" required>
+                        </div>
+                        <div class="form-group" style="margin-top: 30px;">
+                            <label for="beschäftigung">Derzeitige Beschäftigung bzw. Studienfach</label>
+                            <input type="text" class="form-control" id="beschäftigung" name="beschäftigung" required>
+                        </div>
+                        <div class="form-group" style="margin-top: 30px;">
+                            <label for="benutzt">Haben Sie die Webseiten <b>spreadshirt.de</b> oder <b>shirtinator.de</b> schon einmal benutzt? Wenn ja, welche?</label>
+                            <input type="text" class="form-control" id="benutzt" name="benutzt">
                         </div>
                     </div>
                 </div>
@@ -61,7 +73,7 @@
             <div class="col-sm-2"></div>
             <div class="col-sm-8">
 
-                <input class="btn btn-secondary" type="submit" value="Fertig!">
+                <input class="btn btn-secondary" type="submit" value="Weiter">
             </div>
             <div class="col-sm-2"></div>
         </div>
