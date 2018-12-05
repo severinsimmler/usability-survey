@@ -4,54 +4,68 @@ import sys
 
 import flask
 
-if getattr(sys, "frozen", False):
-    resources_root = Path(sys._MEIPASS)
-else:
-    resources_root = Path("application")
-
-web = flask.Flask("usability-survey",
-                  template_folder=Path(resources_root, "templates"),
-                  static_folder=Path(resources_root, "static"))
+from application import utils
 
 
-def dump(path, forms):
-    with path.open("w", encoding="utf-8") as textfile:
-        textfile.write(json.dumps(forms, ensure_ascii=False, indent=4))
-
+web = utils.init_app("usability-survey")
 
 @web.route("/")
 def index():
     return flask.render_template("index.html",
                                  view="index")
 
+
 @web.route("/privacy")
 def privacy():
     return flask.render_template("privacy.html",
                                  view="privacy")
 
-@web.route("/demographic")
-def demographic():
-    return flask.render_template("demographic.html")
 
-@web.route("/quesi", methods=["POST"])
+@web.route("/pre")
+def pre():
+    return flask.render_template("pre.html",
+                                 view="pre")
+
+
+@web.route("/quesi")
 def quesi():
-    data = flask.request.form
-    global root
-    root = Path(f"survey-data-{data['pseudonym'].replace(' ', '-').lower()}")
-    root.mkdir()
-    path = Path(root, "fragebogen-demographic.json")
-    dump(path, flask.request.form)
-    return flask.render_template("quesi.html")
+    return flask.render_template("quesi.html",
+                                 view="quesi")
 
-@web.route("/nasa", methods=["POST"])
+
+@web.route("/nasa")
 def nasa():
-    path = Path(root, "fragebogen-quesi.json")
-    dump(path, flask.request.form)
-    return flask.render_template("nasa.html")
+    return flask.render_template("nasa.html",
+                                 view="nasa")
 
-@web.route("/thankyou", methods=["POST"])
-def thankyou():
-    path = Path(root, "fragebogen-nasa.json")
-    dump(path, flask.request.form)
-    return flask.render_template("thankyou.html",
-                                 view="thankyou")
+
+@web.route("/post")
+def post():
+    return flask.render_template("post.html",
+                                 view="post")
+
+
+@web.route("/export/<fragebogen>", methods=["POST"])
+def export(fragebogen):
+    # Get data from HTML forms:
+    data = flask.request.form
+
+    # Construct folderpath object:
+    root = Path("fragebogen-daten")
+
+    # Create folder if it doesn't exist yet:
+    if not root.exists():
+        root.mkdir()
+
+    # Include website in filename, if any:
+    if "website" in data:
+        filename = f"{data['website']}-{fragebogen}.json"
+    else:
+        filename = f"{fragebogen}.json"
+
+    # Construct filepath object:
+    path = Path(root, filename)
+
+    # Dump data:
+    utils.dump(path, data)
+    return flask.render_template("thankyou.html")

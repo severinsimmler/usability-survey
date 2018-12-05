@@ -1,12 +1,19 @@
 {% extends "base.html" %}
 
 {% block main %}
-
-<form action="/nasa" method="POST" enctype="multipart/form-data">
+<form action="/export/quesi" method="POST" enctype="multipart/form-data">
   <div class="container">
     <div class="row" style="margin-top: 50px;">
       <div class="col-sm-12">
         <h2>QUESI Fragebogen zur Messung der Zufriedenheit</h2>
+        <div class="form-group" style="margin-top: 20px;">
+          <label for="website">Welche Webseite haben Sie gerade bearbeitet?</label>
+          <select class="form-control" id="website" name="website">
+            <option value="unbekannt">Bitte auswählen...</option>
+            <option value="shirtinator">shirtinator.de</option>
+            <option value="spreadshirt">spreadshirt.de</option>
+          </select>
+        </div>
         <table class="table table-striped" style="margin-top: 50px;">
           <th>
             Item
@@ -148,7 +155,7 @@
 
           <!-- Item7 -->
           <tr>
-            <td>Die Systembenutzung war unkompliziert.</td>
+            <td>Es gelang mir, meine Ziele so zu erreichen, wie ich es mir vorgestellt habe.</td>
             <td align="center">
               <input style="margin: 0 auto" class="form-check-input" type="radio" name="item7" id="Auswahl1" value="0">
             </td>
@@ -305,12 +312,8 @@
               <input style="margin: 0 auto" class="form-check-input" type="radio" name="item14" id="Auswahl5" value="4">
             </td>
           </tr>
-
         </table>
-        <div class="alert alert-success" role="alert" style="margin-top: 50px;">Kontrollieren Sie bitte, ob Sie
-          zu allen Fragen Angaben gemacht haben. Bei Unklarheiten wenden Sie sich bitte an die
-          Versuchsleiterin/den Versuchsleiter.</div>
-        <input class="btn btn-secondary" type="submit" value="Weiter" style="margin-top: 50px; margin-bottom: 50px;">
+        <input class="btn btn-secondary" type="submit" value="Fertig!" style="margin-top: 30px; margin-bottom: 50px;">
       </div>
     </div>
   </div>

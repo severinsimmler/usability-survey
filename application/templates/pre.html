@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block main %}
+<form action="/export/pre" method="POST" enctype="multipart/form-data">
+    <div class="container">
+        <div class="row" style="margin-top: 50px;">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8">
+                <div class="card">
+                    <div class="card-header">
+                        <b>Persönliche Angaben</b>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="geschlecht">Geschlecht</label>
+                            <select class="form-control" id="geschlecht" name="geschlecht">
+                                <option value="unbekannt">Keine Angabe</option>
+                                <option value="männlich">Männlich</option>
+                                <option value="weiblich">Weiblich</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="pseudonym">Alter</label>
+                            <input type="number" class="form-control" id="alter" name="alter" min=10 max=100>
+                        </div>
+                        <div class="form-group">
+                            <label for="bildungsabschluss">Höchster Bildungsabschluss</label>
+                            <select class="form-control" id="bildungsabschluss" name="bildungsabschluss">
+                                <option value="unbekannt">Keine Angabe</option>
+                                <option value="keiner">Kein Schulabschluss</option>
+                                <option value="grund-hauptschule">Grund-/Hauptschulabschluss</option>
+                                <option value="realschule">Realschule (Mittlere Reife)</option>
+                                <option value="ausbildung">Gymnasium (Abitur)</option>
+                                <option value="hochschule">Hochschule (Bachelor/Master/Promotion)</option>
+                            </select>
+                        </div>
+                        <div class="form-group" style="margin-top: 30px;">
+                            <label for="beschäftigung">Derzeitige Beschäftigung</label>
+                            <input type="text" class="form-control" id="beschäftigung" name="beschäftigung" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="vorkenntnisse">Haben Sie <b>spreadshirt.de</b> oder <b>shirtinator.de</b>
+                                schon einmal benutzt?</label>
+                            <select class="form-control" id="vorkenntnisse" name="vorkenntnisse">
+                                <option value="keine">Nein</option>
+                                <option value="spreadshirt">spreadshirt.de</option>
+                                <option value="shirtinator">shirtinator.de</option>
+                                <option value="beide">Beide</option>
+                                <option value="unbekannt">Keine Angabe</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-2"></div>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 30px; margin-bottom: 50px;">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8">
+                <input class="btn btn-secondary" type="submit" value="Fertig!">
+            </div>
+            <div class="col-sm-2"></div>
+        </div>
+    </div>
+    </div>
+</form>
+{% endblock %}

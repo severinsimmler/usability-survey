@@ -2,12 +2,20 @@
 
 {% block main %}
 
-<form action="/thankyou" method="POST" enctype="multipart/form-data">
+<form action="/export/nasa" method="POST" enctype="multipart/form-data">
     <div class="container">
         <div class="row" style="margin-top: 50px;">
             <div class="col-sm-2"></div>
             <div class="col-sm-8">
                 <h2>NASA-TLX Fragebogen zur Messung der Effizienz</h2>
+                <div class="form-group" style="margin-top: 20px;">
+                    <label for="website">Welche Webseite haben Sie gerade bearbeitet?</label>
+                    <select class="form-control" id="website" name="website">
+                        <option value="unbekannt">Bitte auswählen...</option>
+                        <option value="shirtinator">shirtinator.de</option>
+                        <option value="spreadshirt">spreadshirt.de</option>
+                    </select>
+                </div>
                 <div class="card" style="margin-top: 50px;">
                     <div class="card-header">
                         <b>Geistige Anforderungen</b>
@@ -111,13 +119,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="alert alert-success" role="alert" style="margin-top: 50px;">Kontrollieren Sie bitte, ob Sie
-                    zu allen Fragen Angaben gemacht haben. Bei Unklarheiten wenden Sie sich bitte an die
-                    Versuchsleiterin/den Versuchsleiter.</div>
                 <div class="col-sm-2"></div>
             </div>
         </div>
-        <div class="row" style="margin-top: 20px; margin-bottom: 50px;">
+        <div class="row" style="margin-top: 30px; margin-bottom: 50px;">
             <div class="col-sm-2"></div>
             <div class="col-sm-8">
 

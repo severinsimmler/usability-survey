@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block main %}
+<form action="/export/post" method="POST" enctype="multipart/form-data">
+    <div class="container">
+        <div class="row" style="margin-top: 50px;">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8">
+                <div class="card">
+                    <div class="card-header">
+                        <b>Feedback</b>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="besser">Welche Webseite hat Ihnen besser gefallen?</label>
+                            <select class="form-control" id="besser" name="besser">
+                                <option value="unbekannt">Keine Angabe</option>
+                                <option value="shirtinator">shirtinator.de</option>
+                                <option value="spreadshirt">spreadshirt.de</option>
+                                <option value="beide">Beide gleich gut</option>
+                            </select>
+                        </div>
+                        <div class="form-group" style="margin-top: 30px;">
+                            <label for="positiv">Was ist Ihnen besonders <b>positiv</b> aufgefallen?</label>
+                            <textarea class="form-control" id="positiv" rows="4" name="positiv"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="negativ">Was ist Ihnen besonders <b>negativ</b> aufgefallen?</label>
+                            <textarea class="form-control" id="negativ" rows="4" name="negativ"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-2"></div>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 30px; margin-bottom: 50px;">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8">
+                <input class="btn btn-secondary" type="submit" value="Fertig!">
+            </div>
+            <div class="col-sm-2"></div>
+        </div>
+    </div>
+    </div>
+</form>
+{% endblock %}

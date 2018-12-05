@@ -29,6 +29,18 @@
         <li class="nav-item">
           <a class="nav-link {% if view == 'privacy' %}active{% endif %}" href="{{ url_for('privacy') }}">Datenschutzhinweis</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link {% if view == 'pre' %}active{% endif %}" href="{{ url_for('pre') }}">Prä-Fragebogen</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% if view == 'quesi' %}active{% endif %}" href="{{ url_for('quesi') }}">QUESI</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% if view == 'nasa' %}active{% endif %}" href="{{ url_for('nasa') }}">NASA-TLX</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% if view == 'post' %}active{% endif %}" href="{{ url_for('post') }}">Post-Fragebogen</a>
+        </li>
       </ul>
     </div>
   </nav>
