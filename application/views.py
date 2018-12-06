@@ -68,4 +68,7 @@ def export(fragebogen):
 
     # Dump data:
     utils.dump(path, data)
-    return flask.render_template("thankyou.html")
+    if fragebogen in {"quesi"}:
+        return flask.redirect(flask.url_for("nasa"))
+    else:
+        return flask.render_template("thankyou.html")
