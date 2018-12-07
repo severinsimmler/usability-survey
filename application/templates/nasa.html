@@ -9,12 +9,13 @@
             <div class="col-sm-8">
                 <h2>NASA-TLX Fragebogen zur Messung der Effizienz</h2>
                 <div class="form-group" style="margin-top: 20px;">
-                    <label for="website">Welche Webseite haben Sie gerade bearbeitet?</label>
-                    <select class="form-control" id="website" name="website">
-                        <option value="unbekannt">Bitte auswählen...</option>
-                        <option value="shirtinator">shirtinator.de</option>
-                        <option value="spreadshirt">spreadshirt.de</option>
-                    </select>
+                    <label for="website">Welche Website haben Sie gerade bearbeitet?</label>
+                    <div class="radio">
+                        <label><input type="radio" name="website" value="shirtinator" required> shirtinator.de</label>
+                    </div>
+                    <div class="radio">
+                        <label><input type="radio" name="website" value="shirtinator"> spreadshirt.de</label>
+                    </div>
                 </div>
                 <div class="card" style="margin-top: 50px;">
                     <div class="card-header">
@@ -30,7 +31,7 @@
                             <div class="text-center" style="margin-top: 20px;">
                                 <span>gering</span>
                                 <input style="width: 500px;" type="range" min="0" max="10" step="1" value="5" name="geistig"
-                                    id="geistig" />
+                                    id="geistig"/>
                                 <span>hoch</span></div>
                         </div>
                     </div>

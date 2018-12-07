@@ -21,7 +21,7 @@
                         </div>
                         <div class="form-group">
                             <label for="pseudonym">Alter</label>
-                            <input type="number" class="form-control" id="alter" name="alter" min=10 max=100>
+                            <input type="number" class="form-control" id="alter" name="alter" min=10 max=100 required>
                         </div>
                         <div class="form-group">
                             <label for="bildungsabschluss">Höchster Bildungsabschluss</label>
@@ -35,18 +35,18 @@
                             </select>
                         </div>
                         <div class="form-group" style="margin-top: 30px;">
-                            <label for="beschäftigung">Derzeitige Beschäftigung</label>
+                            <label for="beschäftigung">Derzeitige Beschäftigung bzw. Studienfach</label>
                             <input type="text" class="form-control" id="beschäftigung" name="beschäftigung" required>
                         </div>
                         <div class="form-group">
                             <label for="vorkenntnisse">Haben Sie <b>spreadshirt.de</b> oder <b>shirtinator.de</b>
                                 schon einmal benutzt?</label>
                             <select class="form-control" id="vorkenntnisse" name="vorkenntnisse">
+                                <option value="unbekannt">Keine Angabe</option>
                                 <option value="keine">Nein</option>
                                 <option value="spreadshirt">spreadshirt.de</option>
                                 <option value="shirtinator">shirtinator.de</option>
                                 <option value="beide">Beide</option>
-                                <option value="unbekannt">Keine Angabe</option>
                             </select>
                         </div>
                     </div>

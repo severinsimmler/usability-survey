@@ -7,12 +7,13 @@
       <div class="col-sm-12">
         <h2>QUESI Fragebogen zur Messung der Zufriedenheit</h2>
         <div class="form-group" style="margin-top: 20px;">
-          <label for="website">Welche Webseite haben Sie gerade bearbeitet?</label>
-          <select class="form-control" id="website" name="website">
-            <option value="unbekannt">Bitte auswählen...</option>
-            <option value="shirtinator">shirtinator.de</option>
-            <option value="spreadshirt">spreadshirt.de</option>
-          </select>
+          <label for="website">Welche Website haben Sie gerade bearbeitet?</label>
+          <div class="radio">
+            <label><input type="radio" name="website" value="shirtinator" required> shirtinator.de</label>
+          </div>
+          <div class="radio">
+            <label><input type="radio" name="website" value="shirtinator"> spreadshirt.de</label>
+          </div>
         </div>
         <table class="table table-striped" style="margin-top: 50px;">
           <th>
@@ -37,7 +38,7 @@
           <tr>
             <td>Es gelang mir, das System ohne Nachdenken zu benutzen.</td>
             <td align="center">
-              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item1" id="Auswahl1" value="0">
+              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item1" id="Auswahl1" value="0" required>
             </td>
             <td align="center">
               <input style="margin: 0 auto" class="form-check-input" type="radio" name="item1" id="Auswahl2" value="1">
@@ -57,7 +58,7 @@
           <tr>
             <td>Ich habe erreicht, was ich mit dem System erreichen wollte.</td>
             <td align="center">
-              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item2" id="Auswahl1" value="0">
+              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item2" id="Auswahl1" value="0" required>
             </td>
             <td align="center">
               <input style="margin: 0 auto" class="form-check-input" type="radio" name="item2" id="Auswahl2" value="1">
@@ -77,7 +78,7 @@
           <tr>
             <td>Mir war sofort klar, wie das System funktioniert.</td>
             <td align="center">
-              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item3" id="Auswahl1" value="0">
+              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item3" id="Auswahl1" value="0" required>
             </td>
             <td align="center">
               <input style="margin: 0 auto" class="form-check-input" type="radio" name="item3" id="Auswahl2" value="1">
@@ -97,7 +98,7 @@
           <tr>
             <td>Der Umgang mit dem System erschien mir vertraut.</td>
             <td align="center">
-              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item4" id="Auswahl1" value="0">
+              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item4" id="Auswahl1" value="0" required>
             </td>
             <td align="center">
               <input style="margin: 0 auto" class="form-check-input" type="radio" name="item4" id="Auswahl2" value="1">
@@ -117,7 +118,7 @@
           <tr>
             <td>Bei der Benutzung des Systems sind keine Probleme aufgetreten.</td>
             <td align="center">
-              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item5" id="Auswahl1" value="0">
+              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item5" id="Auswahl1" value="0" required>
             </td>
             <td align="center">
               <input style="margin: 0 auto" class="form-check-input" type="radio" name="item5" id="Auswahl2" value="1">
@@ -137,7 +138,7 @@
           <tr>
             <td>Die Systembenutzung war unkompliziert.</td>
             <td align="center">
-              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item6" id="Auswahl1" value="0">
+              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item6" id="Auswahl1" value="0" required>
             </td>
             <td align="center">
               <input style="margin: 0 auto" class="form-check-input" type="radio" name="item6" id="Auswahl2" value="1">
@@ -157,7 +158,7 @@
           <tr>
             <td>Es gelang mir, meine Ziele so zu erreichen, wie ich es mir vorgestellt habe.</td>
             <td align="center">
-              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item7" id="Auswahl1" value="0">
+              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item7" id="Auswahl1" value="0" required>
             </td>
             <td align="center">
               <input style="margin: 0 auto" class="form-check-input" type="radio" name="item7" id="Auswahl2" value="1">
@@ -177,7 +178,7 @@
           <tr>
             <td>Es fiel mir von Anfang an leicht, das System zu benutzen.</td>
             <td align="center">
-              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item8" id="Auswahl1" value="0">
+              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item8" id="Auswahl1" value="0" required>
             </td>
             <td align="center">
               <input style="margin: 0 auto" class="form-check-input" type="radio" name="item8" id="Auswahl2" value="1">
@@ -197,7 +198,7 @@
           <tr>
             <td> Mir war immer klar, was ich tun musste, um das System zu benutzen.</td>
             <td align="center">
-              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item9" id="Auswahl1" value="0">
+              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item9" id="Auswahl1" value="0" required>
             </td>
             <td align="center">
               <input style="margin: 0 auto" class="form-check-input" type="radio" name="item9" id="Auswahl2" value="1">
@@ -217,7 +218,7 @@
           <tr>
             <td>Die Benutzung des Systems verlief reibungslos.</td>
             <td align="center">
-              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item10" id="Auswahl1" value="0">
+              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item10" id="Auswahl1" value="0" required>
             </td>
             <td align="center">
               <input style="margin: 0 auto" class="form-check-input" type="radio" name="item10" id="Auswahl2" value="1">
@@ -237,7 +238,7 @@
           <tr>
             <td>Ich musste mich kaum auf die Benutzung des Systems konzentrieren.</td>
             <td align="center">
-              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item11" id="Auswahl1" value="0">
+              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item11" id="Auswahl1" value="0" required>
             </td>
             <td align="center">
               <input style="margin: 0 auto" class="form-check-input" type="radio" name="item11" id="Auswahl2" value="1">
@@ -257,7 +258,7 @@
           <tr>
             <td>Das System hat mich dabei unterstützt, meine Ziele vollständig zu erreichen.</td>
             <td align="center">
-              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item12" id="Auswahl1" value="0">
+              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item12" id="Auswahl1" value="0" required>
             </td>
             <td align="center">
               <input style="margin: 0 auto" class="form-check-input" type="radio" name="item12" id="Auswahl2" value="1">
@@ -277,7 +278,7 @@
           <tr>
             <td>Die Benutzung des Systems war mir auf Anhieb klar.</td>
             <td align="center">
-              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item13" id="Auswahl1" value="0">
+              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item13" id="Auswahl1" value="0" required>
             </td>
             <td align="center">
               <input style="margin: 0 auto" class="form-check-input" type="radio" name="item13" id="Auswahl2" value="1">
@@ -297,7 +298,7 @@
           <tr>
             <td>Ich tat immer automatisch das Richtige, um mein Ziel zu erreichen.</td>
             <td align="center">
-              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item14" id="Auswahl1" value="0">
+              <input style="margin: 0 auto" class="form-check-input" type="radio" name="item14" id="Auswahl1" value="0" required>
             </td>
             <td align="center">
               <input style="margin: 0 auto" class="form-check-input" type="radio" name="item14" id="Auswahl2" value="1">
