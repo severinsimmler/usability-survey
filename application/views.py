@@ -1,5 +1,6 @@
 import json
 from pathlib import Path
+import random
 import sys
 
 import flask
@@ -29,14 +30,24 @@ def pre():
 
 @web.route("/quesi")
 def quesi():
+    # Copy the items list:
+    items = utils.QUESI.copy()
+    # Shuffle items:
+    random.shuffle(items)
     return flask.render_template("quesi.html",
-                                 view="quesi")
+                                 view="quesi",
+                                 items=items)
 
 
 @web.route("/nasa")
 def nasa():
+    # Copy the items list:
+    items = utils.NASA.copy()
+    # Shuffle items:
+    random.shuffle(items)
     return flask.render_template("nasa.html",
-                                 view="nasa")
+                                 view="nasa",
+                                 items=items)
 
 
 @web.route("/post")
