@@ -9,6 +9,7 @@ pandas = "*"
 statsmodels = "*"
 numpy = "*"
 parse = "*"
+jupyterlab = "*"
 
 [requires]
 python_version = "3.7"
