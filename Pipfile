@@ -4,9 +4,11 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-Flask = "==1.0.2"
-
-[dev-packages]
+Flask = "*"
+pandas = "*"
+statsmodels = "*"
+numpy = "*"
+parse = "*"
 
 [requires]
 python_version = "3.7"
