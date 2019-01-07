@@ -27,7 +27,9 @@ class Sample:
                                    "score": score,
                                    "website": metadata["website"],
                                    "survey": metadata["collection"]})
-        return pd.DataFrame(scores)
+        data = pd.DataFrame(scores)
+        data.name = "NASA-TLX"
+        return data
 
     @property
     def quesi(self):
@@ -64,7 +66,9 @@ class Sample:
                                    "score": score,
                                    "website": metadata["website"],
                                    "survey": metadata["collection"]})
-        return pd.DataFrame(scores)
+        data = pd.DataFrame(scores)
+        data.name = "QUESI"
+        return data
 
     @property
     def pre(self):
@@ -78,7 +82,9 @@ class Sample:
                                     "bildungsabschluss": survey["bildungsabschluss"],
                                     "beschäftigung": survey["Derzeitige Beschäftigung bzw. Studienfach"],
                                     "vorkenntnisse": survey["Websites schon einmal benutzt"]})
-        return pd.DataFrame(answers)
+        data = pd.DataFrame(answers)
+        data.name = "Pre-questionnaire"
+        return data
 
     @property
     def post(self):
@@ -92,7 +98,9 @@ class Sample:
                                     "negativ shirtinator": survey["Negativ bei shirtinator.de"],
                                     "positiv spreadshirt": survey["Positiv bei spreadshirt.de"],
                                     "negativ spreadshirt": survey["Negativ bei spreadshirt.de"]})
-        return pd.DataFrame(answers)
+        data = pd.DataFrame(answers)
+        data.name = "Post-questionnaire"
+        return data
 
     @property
     def feedback(self):
@@ -106,7 +114,9 @@ class Sample:
                                    "positiv": counts["pos"] if "pos" in counts.index else 0,
                                    "negativ": counts["neg"] if "neg" in counts.index else 0,
                                    "website": metadata["website"]})
-        return pd.DataFrame(values)
+        data = pd.DataFrame(values)
+        data.name = "Feedback"
+        return data
 
     @property
     def keyboard(self):
@@ -117,9 +127,11 @@ class Sample:
                 if metadata and metadata["collection"] == "keyboard":
                     counts = logfile[0].count()
                     values.append({"pseudonym": proband["pseudonym"],
-                                   "tastenschläge": counts,
+                                   "tastenanschläge": counts,
                                    "website": metadata["website"]})
-        return pd.DataFrame(values)
+        data = pd.DataFrame(values)
+        data.name = "Keyboard"
+        return data
 
     @property
     def mouse(self):
@@ -132,7 +144,9 @@ class Sample:
                     values.append({"pseudonym": proband["pseudonym"],
                                    "clicks": counts,
                                    "website": metadata["website"]})
-        return pd.DataFrame(values)
+        data = pd.DataFrame(values)
+        data.name = "Mouse"
+        return data
 
     @property
     def survey_data(self):
@@ -150,22 +164,8 @@ class Sample:
 
     def optimal_size(self, alpha: float = 0.15, power: float = 0.7):
         sizes = list()
-        collections = [("NASA", {"x": self.nasa[self.nasa["website"] == "spreadshirt"]["score"],
-                        "y": self.nasa[self.nasa["website"] == "shirtinator"]["score"]}),
-                       ("QUESI", {"x": self.quesi[self.quesi["website"] == "spreadshirt"]["score"],
-                        "y": self.quesi[self.quesi["website"] == "shirtinator"]["score"]}),
-                       ("Feedback positiv", {"x": self.feedback[self.feedback["website"] == "spreadshirt"]["positiv"],
-                        "y": self.feedback[self.feedback["website"] == "shirtinator"]["positiv"]}),
-                       ("Feedback negativ", {"x": self.feedback[self.feedback["website"] == "spreadshirt"]["negativ"],
-                        "y": self.feedback[self.feedback["website"] == "shirtinator"]["negativ"]}),
-                       ("Tastatur", {"x": self.keyboard[self.keyboard["website"] == "spreadshirt"]["tastenschläge"],
-                        "y": self.keyboard[self.keyboard["website"] == "shirtinator"]["tastenschläge"]}),
-                       ("Maus", {"x": self.mouse[self.mouse["website"] == "spreadshirt"]["clicks"],
-                        "y": self.mouse[self.mouse["website"] == "shirtinator"]["clicks"]})]
-        for instance in collections:
-            collection = instance[0]
-            data = instance[1]
-            effect = utils.cohen_d(data["x"], data["y"])
+        for effect in self.effects:
+            name, effect = effect
             analysis = TTestIndPower()
             result = analysis.solve_power(effect,
                                           power=power,
@@ -173,5 +173,33 @@ class Sample:
                                           ratio=1.0,
                                           alpha=alpha)
             sizes.append(result)
-            print(f"Optimal size for {collection}: {result}\n")
-        return pd.Series(sizes).median()
+        return {"sizes": sizes,
+                "effects": list(self.effects),
+                "median size": pd.Series(sizes).median()}
+    
+    @property
+    def effects(self):
+        collections = [("NASA-TLX", {"x": self.nasa[self.nasa["website"] == "spreadshirt"]["score"],
+                        "y": self.nasa[self.nasa["website"] == "shirtinator"]["score"]}),
+                       ("QUESI", {"x": self.quesi[self.quesi["website"] == "spreadshirt"]["score"],
+                        "y": self.quesi[self.quesi["website"] == "shirtinator"]["score"]}),
+                       ("Positives Feedback", {"x": self.feedback[self.feedback["website"] == "spreadshirt"]["positiv"],
+                        "y": self.feedback[self.feedback["website"] == "shirtinator"]["positiv"]}),
+                       ("Negatives Feedback", {"x": self.feedback[self.feedback["website"] == "spreadshirt"]["negativ"],
+                        "y": self.feedback[self.feedback["website"] == "shirtinator"]["negativ"]}),
+                       ("Tastenanschläge", {"x": self.keyboard[self.keyboard["website"] == "spreadshirt"]["tastenanschläge"],
+                        "y": self.keyboard[self.keyboard["website"] == "shirtinator"]["tastenanschläge"]}),
+                       ("Mausklicks", {"x": self.mouse[self.mouse["website"] == "spreadshirt"]["clicks"],
+                        "y": self.mouse[self.mouse["website"] == "shirtinator"]["clicks"]})]
+        for collection in collections:
+            name, data = collection
+            effect = utils.cohen_d(data["x"], data["y"])
+            yield name, effect
+
+    def plot_power(self, alpha, sample_sizes, figsize=(8, 4)):
+        effect_sizes = list(self.effects)
+        analysis = utils.TTestIndPower()
+        return analysis.plot_power(nobs=sample_sizes,
+                                   alpha=alpha,
+                                   effect_size=effect_sizes,
+                                   figsize=figsize)

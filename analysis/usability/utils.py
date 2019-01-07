@@ -3,6 +3,7 @@ import json
 
 import numpy as np
 import pandas as pd
+from statsmodels.stats.power import TTestIndPower
 
 
 K = {"item1", "item6", "item11"}
@@ -28,7 +29,10 @@ def process_surveys(directory: Path, suffix: str):
 
 
 def read_logfile(filepath: Path):
-    logs = pd.read_csv(filepath, sep=";", header=None)
+    try:
+        logs = pd.read_csv(filepath, sep=";", header=None, encoding="utf-8")
+    except pd.errors.EmptyDataError:
+        logs = pd.DataFrame(columns=[0, 1])
     logs.name = filepath.stem
     return logs
 
@@ -43,3 +47,26 @@ def cohen_d(x, y):
     size_y = len(y)
     dof = size_x + size_y - 2
     return (np.mean(x) - np.mean(y)) / np.sqrt(((size_x - 1) * np.std(x, ddof=1) ** 2 + (size_y - 1) * np.std(y, ddof=1) ** 2) / dof)
+
+
+class TTestIndPower(TTestIndPower):
+    def plot_power(self, dep_var='nobs', nobs=None, effect_size=None,
+                   alpha=0.05, ax=None, title=None, plt_kwds=None, figsize=(10, 8), 
+                   colors=['#e41a1c','#377eb8','#4daf4a','#984ea3','#ff7f00','#ffff33'], **kwds):
+        #if pwr_kwds is None:
+        #    pwr_kwds = {}
+        import matplotlib.pyplot as plt
+        fig, ax = plt.subplots(figsize=figsize)
+        plt_alpha = 1 #0.75
+        lw = 2
+        if dep_var == 'nobs':
+            for ii, es in enumerate(effect_size):
+                data, es = es
+                power = self.power(es, nobs, alpha, **kwds)
+                ax.plot(nobs, power, lw=1.5, color=colors[ii], label=data + " (" + r"$d = {}$".format('%4.2F' % es) + ")")
+                xlabel = 'Stichprobengröße'
+                ylabel = 'Trennschärfe'
+        ax.set_xlabel(xlabel)
+        ax.set_ylabel(ylabel)
+        plt.legend(bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.)
+        return fig
