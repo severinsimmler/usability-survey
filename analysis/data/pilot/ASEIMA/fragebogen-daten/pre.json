@@ -1,7 +1,7 @@
 {
-    "geschlecht": "männlich",
-    "alter": "19",
+    "Geschlecht": "männlich",
+    "Alter": "19",
     "bildungsabschluss": "ausbildung",
-    "beschäftigung": "Student",
-    "vorkenntnisse": "keine"
+    "Derzeitige Beschäftigung bzw. Studienfach": "Student",
+    "Websites schon einmal benutzt": "nein"
 }

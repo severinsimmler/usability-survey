@@ -4,7 +4,7 @@ import json
 
 import pandas as pd
 import parse
-import statsmodels
+from statsmodels.stats.power import TTestIndPower
 
 from . import utils
 
@@ -103,8 +103,8 @@ class Sample:
                 if metadata and metadata["collection"] == "feedback":
                     counts = logfile[1].value_counts()
                     values.append({"pseudonym": proband["pseudonym"],
-                                   "positiv": counts["pos"],
-                                   "negativ": counts["neg"],
+                                   "positiv": counts["pos"] if "pos" in counts.index else 0,
+                                   "negativ": counts["neg"] if "neg" in counts.index else 0,
                                    "website": metadata["website"]})
         return pd.DataFrame(values)
 
@@ -150,25 +150,28 @@ class Sample:
 
     def optimal_size(self, alpha: float = 0.15, power: float = 0.7):
         sizes = list()
-        collections = [{"x": self.nasa[self.nasa["website"] == "spreadshirt"]["score"],
-                        "y": self.nasa[self.nasa["website"] == "shirtinator"]["score"]},
-                       {"x": self.quesi[self.quesi["website"] == "spreadshirt"]["score"],
-                        "y": self.quesi[self.quesi["website"] == "shirtinator"]["score"]},
-                       {"x": self.feedback[self.feedback["website"] == "spreadshirt"]["positiv"],
-                        "y": self.feedback[self.feedback["website"] == "shirtinator"]["positiv"]},
-                       {"x": self.feedback[self.feedback["website"] == "spreadshirt"]["negativ"],
-                        "y": self.feedback[self.feedback["website"] == "shirtinator"]["negativ"]},
-                       {"x": self.keyboard[self.keyboard["website"] == "spreadshirt"]["tastenschläge"],
-                        "y": self.keyboard[self.keyboard["website"] == "shirtinator"]["tastenschläge"]},
-                       {"x": self.mouse[self.mouse["website"] == "spreadshirt"]["clicks"],
-                        "y": self.mouse[self.mouse["website"] == "shirtinator"]["clicks"]}]
-        for data in collections:
+        collections = [("NASA", {"x": self.nasa[self.nasa["website"] == "spreadshirt"]["score"],
+                        "y": self.nasa[self.nasa["website"] == "shirtinator"]["score"]}),
+                       ("QUESI", {"x": self.quesi[self.quesi["website"] == "spreadshirt"]["score"],
+                        "y": self.quesi[self.quesi["website"] == "shirtinator"]["score"]}),
+                       ("Feedback positiv", {"x": self.feedback[self.feedback["website"] == "spreadshirt"]["positiv"],
+                        "y": self.feedback[self.feedback["website"] == "shirtinator"]["positiv"]}),
+                       ("Feedback negativ", {"x": self.feedback[self.feedback["website"] == "spreadshirt"]["negativ"],
+                        "y": self.feedback[self.feedback["website"] == "shirtinator"]["negativ"]}),
+                       ("Tastatur", {"x": self.keyboard[self.keyboard["website"] == "spreadshirt"]["tastenschläge"],
+                        "y": self.keyboard[self.keyboard["website"] == "shirtinator"]["tastenschläge"]}),
+                       ("Maus", {"x": self.mouse[self.mouse["website"] == "spreadshirt"]["clicks"],
+                        "y": self.mouse[self.mouse["website"] == "shirtinator"]["clicks"]})]
+        for instance in collections:
+            collection = instance[0]
+            data = instance[1]
             effect = utils.cohen_d(data["x"], data["y"])
-            analysis = statsmodels.stats.power.TTestIndPower()
+            analysis = TTestIndPower()
             result = analysis.solve_power(effect,
                                           power=power,
                                           nobs1=None,
                                           ratio=1.0,
                                           alpha=alpha)
             sizes.append(result)
+            print(f"Optimal size for {collection}: {result}\n")
         return pd.Series(sizes).median()
