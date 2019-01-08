@@ -73,7 +73,7 @@ def variance_homogeneity(collections, columns, alpha=0.05):
 
 
 def t_test(x, y, alpha):
-    stat, p = scipy.stats.ttest_ind(x, y)
+    stat, p = scipy.stats.ttest_rel(x, y)
     equal = True if p > alpha else False
     return {"stat": round(stat, 3),
             "p": round(p, 3),
@@ -86,3 +86,12 @@ def mann_whitney_u(x, y, alpha):
     return {"stat": round(stat, 3),
             "p": round(p, 3),
             "equal": equal}
+
+
+def tost(x, y, lower, upper, alpha):
+    t1, pv1 = scipy.stats.ttest_1samp(x - y, lower)
+    t2, pv2 = scipy.stats.ttest_1samp(x - y, upper)
+    equivalent = True if max(pv1, pv2) < alpha else False
+    return {"upper": {"t": round(t1, 3), "p": pv1},
+            "lower": {"t": round(t2, 3), "p": pv2},
+            "equivalent": equivalent}
