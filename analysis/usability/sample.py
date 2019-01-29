@@ -116,6 +116,8 @@ class Sample:
                                    "negativ": counts["neg"] if "neg" in counts.index else 0,
                                    "website": metadata["website"]})
         data = pd.DataFrame(values)
+        # add 1 to avoid zero division error
+        data["ratio"] = (data["positiv"] + 1) / (data["negativ"] + 1)
         data.name = "Feedback"
         return data
 
@@ -192,6 +194,18 @@ class Sample:
                         "y": self.keyboard[self.keyboard["website"] == "shirtinator"]["tastenanschläge"]}),
                        ("Mausklicks", {"x": self.mouse[self.mouse["website"] == "spreadshirt"]["clicks"],
                         "y": self.mouse[self.mouse["website"] == "shirtinator"]["clicks"]})]
+        collections = [("NASA-TLX", {"x": self.nasa[self.nasa["website"] == "spreadshirt"]["score"],
+                        "y": self.nasa[self.nasa["website"] == "shirtinator"]["score"]}),
+                       ("QUESI", {"x": self.quesi[self.quesi["website"] == "spreadshirt"]["score"],
+                        "y": self.quesi[self.quesi["website"] == "shirtinator"]["score"]}),
+                       ("Feedback", {"x": self.feedback[self.feedback["website"] == "spreadshirt"]["ratio"],
+                        "y": self.feedback[self.feedback["website"] == "shirtinator"]["ratio"]}),
+                       ("Tastenanschläge", {"x": self.keyboard[self.keyboard["website"] == "spreadshirt"]["tastenanschläge"],
+                        "y": self.keyboard[self.keyboard["website"] == "shirtinator"]["tastenanschläge"]}),
+                       ("Mausklicks", {"x": self.mouse[self.mouse["website"] == "spreadshirt"]["clicks"],
+                        "y": self.mouse[self.mouse["website"] == "shirtinator"]["clicks"]})]
+
+        
         for collection in collections:
             name, data = collection
             effect = tests.cohen_d(data["x"], data["y"])

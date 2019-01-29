@@ -30,6 +30,7 @@ class TTestIndPower(TTestIndPower):
         ax.set_xlabel(xlabel)
         ax.set_ylabel(ylabel)
         plt.legend(bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.)
+        plt.tight_layout()
         return fig
 
 
@@ -80,18 +81,9 @@ def t_test(x, y, alpha):
             "equal": equal}
 
 
-def mann_whitney_u(x, y, alpha):
-    stat, p = scipy.stats.mannwhitneyu(x, y)
+def wilcoxon(x, y, alpha):
+    stat, p = scipy.stats.wilcoxon(x, y)
     equal = True if p > alpha else False
     return {"stat": round(stat, 3),
             "p": round(p, 3),
             "equal": equal}
-
-
-def tost(x, y, lower, upper, alpha):
-    t1, pv1 = scipy.stats.ttest_1samp(x - y, lower)
-    t2, pv2 = scipy.stats.ttest_1samp(x - y, upper)
-    equivalent = True if max(pv1, pv2) < alpha else False
-    return {"upper": {"t": round(t1, 3), "p": pv1},
-            "lower": {"t": round(t2, 3), "p": pv2},
-            "equivalent": equivalent}
