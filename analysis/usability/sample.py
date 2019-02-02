@@ -164,6 +164,41 @@ class Sample:
             path = Path(proband, "logfile-daten")
             logs = utils.process_logfiles(path, ".log")
             yield {"pseudonym": proband.name, "logs": list(logs)}
+            
+    @property
+    def assistance(self):
+        values = list()
+        for proband in self.directory.glob("*"):
+            for file in proband.glob("*.json"):
+                metadata = parse.parse(self.pattern, file.name)
+                if metadata and metadata["collection"] == "assistance.json":
+                    with file.open("r", encoding="utf-8") as file:
+                        data = json.load(file)
+                        values.append({"pseudonym": proband.name,
+                                       "n": data["n"],
+                                       "website": metadata["website"]})
+        data = pd.DataFrame(values)
+        data["n"] = data["n"].apply(int)
+        data.name = "Assistance"
+        return data
+    
+    @property
+    def mistakes(self):
+        values = list()
+        for proband in self.directory.glob("*"):
+            for file in proband.glob("*.json"):
+                metadata = parse.parse(self.pattern, file.name)
+                if metadata and metadata["collection"] == "mistakes.json":
+                    with file.open("r", encoding="utf-8") as file:
+                        data = json.load(file)
+                        values.append({"pseudonym": proband.name,
+                                       "n": data["n"],
+                                       "website": metadata["website"]})
+        data = pd.DataFrame(values)
+        data["n"] = data["n"].apply(int)
+        data.name = "Mistakes"
+        return data
+            
 
     def optimal_size(self, alpha: float = 0.15, power: float = 0.7):
         sizes = list()
@@ -178,7 +213,7 @@ class Sample:
             sizes.append(result)
         return {"sizes": sizes,
                 "effects": list(self.effects),
-                "median size": pd.Series(sizes).median()}
+                "median size": pd.Series(sizes).median() + 1}
     
     @property
     def effects(self):

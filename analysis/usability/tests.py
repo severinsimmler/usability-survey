@@ -1,7 +1,10 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import scipy
+import pandas as pd
 from statsmodels.stats.power import TTestIndPower
+import warnings
+warnings.filterwarnings("ignore")
 
 
 def cohen_d(x, y):
@@ -55,7 +58,7 @@ def normal_distribution(collections, columns, alpha=0.05):
         results[f"{data.name}-shirtinator-{column}"] = {"stat": round(stat, 3),
                                                         "p": round(p, 3),
                                                         "gaussian": gaussian}
-    return results
+    return pd.DataFrame(results).T
 
 
 def variance_homogeneity(collections, columns, alpha=0.05):
@@ -70,20 +73,22 @@ def variance_homogeneity(collections, columns, alpha=0.05):
         results[f"{data.name}-{column}"] = {"stat": round(stat, 3),
                                             "p": round(p, 3),
                                             "homogeneous": homogeneous}
-    return results
+    return pd.DataFrame(results).T
 
 
 def t_test(x, y, alpha):
     stat, p = scipy.stats.ttest_rel(x, y)
     equal = True if p > alpha else False
-    return {"stat": round(stat, 3),
-            "p": round(p, 3),
-            "equal": equal}
+    return pd.DataFrame({"stat": round(stat, 3),
+                         "p": round(p, 3),
+                         "alpha": alpha,
+                         "equal": equal}, index=[0])
 
 
 def wilcoxon(x, y, alpha):
     stat, p = scipy.stats.wilcoxon(x, y)
     equal = True if p > alpha else False
-    return {"stat": round(stat, 3),
-            "p": round(p, 3),
-            "equal": equal}
+    return pd.DataFrame({"stat": round(stat, 3),
+                         "p": round(p, 3),
+                         "alpha": alpha,
+                         "equal": equal}, index=[0])
