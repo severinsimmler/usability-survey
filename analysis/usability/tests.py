@@ -78,17 +78,21 @@ def variance_homogeneity(collections, columns, alpha=0.05):
 
 def t_test(x, y, alpha):
     stat, p = scipy.stats.ttest_rel(x, y)
+    df = x.shape[0] - 1
     equal = True if p > alpha else False
     return pd.DataFrame({"stat": round(stat, 3),
                          "p": round(p, 3),
                          "alpha": alpha,
-                         "equal": equal}, index=[0])
+                         "equal": equal,
+                         "df": df}, index=[0])
 
 
 def wilcoxon(x, y, alpha):
     stat, p = scipy.stats.wilcoxon(x, y)
+    df = x.shape[0] - 1
     equal = True if p > alpha else False
     return pd.DataFrame({"stat": round(stat, 3),
                          "p": round(p, 3),
                          "alpha": alpha,
-                         "equal": equal}, index=[0])
+                         "equal": equal,
+                         "df": df}, index=[0])
